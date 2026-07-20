@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/aqueduct-openapi.json
+docs: https://docs.tryaqueduct.com/reference/authentication
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+notes: >-
+  Aqueduct authenticates every request with an API key issued from the dashboard
+  (dashboard.tryaqueduct.com settings page). The key is sent in the Authorization
+  header using the literal prefix "Api-Key", i.e. `Authorization: Api-Key {key}`.
+  All requests must be made over HTTPS. There is no OAuth surface. The OpenAPI
+  models this as an apiKey scheme (named "bearerAuth" in the spec) in the
+  Authorization header.
+schemes:
+- name: bearerAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  format: 'Api-Key {key}'
+  sources:
+  - openapi/aqueduct-openapi.json
