@@ -1,0 +1,439 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner Invoice API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: Invoice
+paths:
+  /invoices:
+    post:
+      summary: Create a new invoice
+      operationId: createInvoice
+      tags:
+      - Invoice
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                customerId:
+                  description: Id of the account owner being billed
+                  type: string
+                externalId:
+                  description: A user-provided identifier for the object
+                  anyOf:
+                  - type: string
+                  - nullable: true
+                currency:
+                  description: Three-letter ISO currency code. Must be a supported currency.
+                  enum:
+                  - USD
+                  - CAD
+                  type: string
+                dueDate:
+                  description: Due date for the invoice. When unspecified, defaults to the organization's default payment terms
+                  example: '2022-08-01'
+                  type: string
+                description:
+                  description: A memo to display in the "notes" section of the invoice pdf
+                  type: string
+                metadata:
+                  additionalProperties: true
+                  type: object
+                lineItems:
+                  items:
+                    properties:
+                      description:
+                        description: Name of the line item. This will be displayed to your customers in the invoice.
+                        type: string
+                      amount:
+                        description: The amount to charge for this line item
+                        type: number
+                      tableRowDisplayFields:
+                        description: Used for displaying the line items as a table in the invoice pdf
+                        items:
+                          properties:
+                            name:
+                              description: Column name of the property
+                              type: string
+                            value:
+                              description: value to display in the table
+                              type: string
+                          type: object
+                        type: array
+                      accountingFields:
+                        description: Used for syncing data into accounting integrations, e.g. Quickbooks or Sage Intacct
+                        items:
+                          properties:
+                            name:
+                              description: field name
+                              type: string
+                            value:
+                              description: field value
+                              type: string
+                          type: object
+                        type: array
+                      externalId:
+                        description: A user-provided identifier for the object
+                        anyOf:
+                        - type: string
+                        - nullable: true
+                    required:
+                    - description
+                    - amount
+                    type: object
+                  type: array
+                productId:
+                  description: Id of the Product being billed for
+                  type: string
+                sendEmail:
+                  description: If true, will send the invoice to the customer via email immediately
+                  type: boolean
+              required:
+              - customerId
+              - currency
+              - lineItems
+              - productId
+              additionalProperties: false
+              type: object
+      responses:
+        '201':
+          description: Invoice is created successfully
+          content:
+            application/json:
+              schema:
+                description: Used to record the amount owed by customers
+                example: '{"a":2,"b":3}'
+                properties:
+                  id:
+                    description: A unique identifier for the object
+                    type: string
+                  createdAt:
+                    description: Time at which the object was created.
+                    type: string
+                  invoiceNo:
+                    type: string
+                  currency:
+                    description: Three-letter ISO currency code. Must be a supported currency.
+                    enum:
+                    - USD
+                    - CAD
+                    type: string
+                  customerId:
+                    description: Id of the account owner being billed
+                    type: string
+                  externalId:
+                    description: A user-provided identifier for the object
+                    anyOf:
+                    - type: string
+                    - nullable: true
+                  status:
+                    description: Current states of the invoice
+                    enum:
+                    - outstanding
+                    - void
+                    - paid
+                    - uncollectible
+                    - draft
+                    - paymentInitiated
+                    - overdue
+                    - sent
+                    type: string
+                  pdfUrl:
+                    description: URL to fetch the invoice pdf (note that this still requires authentication)
+                    type: string
+                  dueDate:
+                    description: Due date for the invoice. When unspecified, defaults to the organization's default payment terms
+                    example: '2022-08-01'
+                    type: string
+                  description:
+                    description: A memo to display in the "notes" section of the invoice pdf
+                    type: string
+                  metadata:
+                    additionalProperties: true
+                    type: object
+                  lineItems:
+                    items:
+                      properties:
+                        description:
+                          description: Name of the line item. This will be displayed to your customers in the invoice.
+                          type: string
+                        createdAt:
+                          description: Time at which the object was created.
+                          type: string
+                        invoiceId:
+                          description: ID of the invoice that contains this line item.
+                          type: string
+                        amount:
+                          description: The amount to charge for this line item
+                          type: number
+                        tableRowDisplayFields:
+                          description: Used for displaying the line items as a table in the invoice pdf
+                          items:
+                            properties:
+                              name:
+                                description: Column name of the property
+                                type: string
+                              value:
+                                description: value to display in the table
+                                type: string
+                            type: object
+                          type: array
+                        accountingFields:
+                          description: Used for syncing data into accounting integrations, e.g. Quickbooks or Sage Intacct
+                          items:
+                            properties:
+                              name:
+                                description: field name
+                                type: string
+                              value:
+                                description: field value
+                                type: string
+                            type: object
+                          type: array
+                        externalId:
+                          description: A user-provided identifier for the object
+                          anyOf:
+                          - type: string
+                          - nullable: true
+                      required:
+                      - description
+                      - invoiceId
+                      - amount
+                      type: object
+                    type: array
+                required:
+                - id
+                - createdAt
+                - currency
+                - customerId
+                - status
+                - lineItems
+                type: object
+    get:
+      summary: Retrieve a list of invoices
+      operationId: getInvoices
+      tags:
+      - Invoice
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: query
+        name: accountOwnerId
+        required: false
+        description: Used to get the invoices for a given AccountOwner (customer)
+        example: owner_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      - in: query
+        name: externalId
+        required: false
+        description: Used to get the invoices matching the provided externalId
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a list of invoices that matched the parameters provided
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/paths/~1invoices/post/responses/201/content/application~1json/schema'
+  /invoices/{invoiceId}/invoicelineitems:
+    post:
+      summary: Add a new line item
+      operationId: createInvoiceLineItem
+      tags:
+      - Invoice
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: invoiceId
+        required: true
+        description: The invoice id we're adding the new InvoiceLineItem to
+        example: inv_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                description:
+                  description: Name of the line item. This will be displayed to your customers in the invoice.
+                  type: string
+                amount:
+                  description: The amount to charge for this line item
+                  type: number
+                tableRowDisplayFields:
+                  description: Used for displaying the line items as a table in the invoice pdf
+                  items:
+                    properties:
+                      name:
+                        description: Column name of the property
+                        type: string
+                      value:
+                        description: value to display in the table
+                        type: string
+                    type: object
+                  type: array
+                accountingFields:
+                  description: Used for syncing data into accounting integrations, e.g. Quickbooks or Sage Intacct
+                  items:
+                    properties:
+                      name:
+                        description: field name
+                        type: string
+                      value:
+                        description: field value
+                        type: string
+                    type: object
+                  type: array
+                externalId:
+                  description: A user-provided identifier for the object
+                  anyOf:
+                  - type: string
+                  - nullable: true
+              required:
+              - description
+              - amount
+              type: object
+      responses:
+        '201':
+          description: InvoiceLineItem is created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceLineItem'
+  /invoices/{invoiceId}/send:
+    post:
+      summary: Send an Invoice via email
+      description: Note that all the parameters to this endpoint are overrides – there are default parameters provided from the Organization's email settings
+      operationId: sendInvoice
+      tags:
+      - Invoice
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: invoiceId
+        required: true
+        description: The id of the Invoice to send
+        example: inv_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                  description: Subject of the email to be sent.
+                message:
+                  type: string
+                  description: HTML message to be added in the email body.
+                recipients:
+                  type: array
+                  description: The list of recipients for this email.
+                  items:
+                    type: string
+                    example:
+                    - foo@example.com
+                    - bar@example.com
+                markAsSent:
+                  type: boolean
+                  description: When true, the invoice will be marked as sent and exit the draft state. Defaults to true. You can set it to false when sending test emails
+      responses:
+        '204':
+          description: Indicates that the invoice was sent successfully
+  /invoices/{invoiceId}/refund:
+    post:
+      summary: Refund an Invoice
+      description: Refunds an invoice if possible (e.g. credit card payments). Will otherwise return a 400
+      operationId: refundInvoice
+      tags:
+      - Invoice
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: invoiceId
+        required: true
+        description: The id of the Invoice to refund
+        example: inv_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  description: The amount to refund. Cannot exceed the invoice total
+      responses:
+        '204':
+          description: Indicates that the invoice was refunded successfully
+  /invoices/{invoiceId}/void:
+    post:
+      summary: Void an Invoice
+      description: Marks an invoice as void.
+      operationId: voidInvoice
+      tags:
+      - Invoice
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: invoiceId
+        required: true
+        description: The id of the Invoice to void
+        example: inv_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Indicates that the invoice was voided successfully
+  /invoices/{invoiceId}:
+    get:
+      summary: Retrieve an Invoice
+      operationId: getInvoice
+      tags:
+      - Invoice
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: invoiceId
+        required: true
+        description: The id of the Invoice to retrieve
+        example: inv_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns the requested Invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1invoices/post/responses/201/content/application~1json/schema'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

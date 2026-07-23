@@ -1,0 +1,69 @@
+generated: '2026-07-18'
+method: generated
+source: https://docs.tryaqueduct.com/reference/types-of-webhook-events
+spec_type: AsyncAPI
+notes: >-
+  Aqueduct publishes a webhook event catalog in prose (not an AsyncAPI document).
+  This AsyncAPI 3.0 is generated faithfully from the documented event types and
+  the shared envelope schema {createdAt, type, object}. Endpoints are registered
+  via the REST createwebhook operation with a shared secret; delivery is an HTTP
+  POST to the subscriber URL.
+asyncapi: 3.0.0
+info:
+  title: Aqueduct Webhooks
+  version: 1.0.0
+  description: >-
+    Event notifications delivered by Aqueduct to registered webhook endpoints.
+    Each event is an HTTP POST carrying the shared envelope. Subscribe by
+    creating a webhook endpoint (POST /webhookendpoints) with the desired
+    enabledEvents and a signing secret.
+defaultContentType: application/json
+channels:
+  webhookDelivery:
+    address: '{subscriberUrl}'
+    messages:
+      provisioningStart:
+        $ref: '#/components/messages/provisioningStart'
+      provisioningEnd:
+        $ref: '#/components/messages/provisioningEnd'
+      invoicePaid:
+        $ref: '#/components/messages/invoicePaid'
+operations:
+  receiveEvent:
+    action: receive
+    channel:
+      $ref: '#/channels/webhookDelivery'
+components:
+  messages:
+    provisioningStart:
+      name: provisioning.start
+      title: Provisioning started
+      summary: Sent at the Provisioning object's start_time. object is a Provisioning object.
+      payload:
+        $ref: '#/components/schemas/eventEnvelope'
+    provisioningEnd:
+      name: provisioning.end
+      title: Provisioning ended
+      summary: Sent at the Provisioning object's end_time. object is a Provisioning object.
+      payload:
+        $ref: '#/components/schemas/eventEnvelope'
+    invoicePaid:
+      name: invoice.paid
+      title: Invoice paid
+      summary: Sent when an invoice is automatically paid or marked paid. object is an Invoice.
+      payload:
+        $ref: '#/components/schemas/eventEnvelope'
+  schemas:
+    eventEnvelope:
+      type: object
+      required: [createdAt, type, object]
+      properties:
+        createdAt:
+          type: string
+          description: Event timestamp.
+        type:
+          type: string
+          description: The event type, e.g. provisioning.start.
+        object:
+          type: object
+          description: The associated resource for this event.

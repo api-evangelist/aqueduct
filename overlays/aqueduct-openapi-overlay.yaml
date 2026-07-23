@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Aqueduct API
+  version: 1.0.0
+extends: openapi/aqueduct-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-18'
+    x-apievangelist-provider: aqueduct
+    x-apievangelist-notes: >-
+      Spec assembled from the Aqueduct ReadMe developer reference
+      (docs.tryaqueduct.com). Aqueduct was acquired by Stripe in August 2024;
+      the developer portal remains live.
+    x-api-key-format: 'Authorization: Api-Key {key}'
+- target: $.info
+  update:
+    x-idempotency:
+      supported: true
+      header: Idempotency-Key
+      applies_to: POST
+      retention: '>=24h'
+- target: $.info
+  update:
+    x-webhooks:
+      supported: true
+      events: [provisioning.start, provisioning.end, invoice.paid]
+      envelope: '{ createdAt, type, object }'

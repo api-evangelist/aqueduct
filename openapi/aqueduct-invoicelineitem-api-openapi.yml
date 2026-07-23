@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner InvoiceLineItem API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: InvoiceLineItem
+paths:
+  /invoicelineitems/{lineItemId}:
+    post:
+      summary: Update an InvoiceLineItem
+      operationId: updateInvoiceLineItem
+      tags:
+      - InvoiceLineItem
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: lineItemId
+        required: true
+        description: The id of the InvoiceLineItem to update
+        example: ili_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                tableRowDisplayFields:
+                  description: Used for displaying the line items as a table in the invoice pdf
+                  items:
+                    properties:
+                      name:
+                        description: Column name of the property
+                        type: string
+                      value:
+                        description: value to display in the table
+                        type: string
+                    type: object
+                  type: array
+                accountingFields:
+                  description: Used for syncing data into accounting integrations, e.g. Quickbooks or Sage Intacct
+                  items:
+                    properties:
+                      name:
+                        description: field name
+                        type: string
+                      value:
+                        description: field value
+                        type: string
+                    type: object
+                  type: array
+                externalId:
+                  description: A user-provided identifier for the object
+                  anyOf:
+                  - type: string
+                  - nullable: true
+                description:
+                  type: string
+                amount:
+                  type: number
+              type: object
+      responses:
+        '200':
+          description: Returns the updated InvoiceLineItem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceLineItem'
+    delete:
+      summary: Delete an InvoiceLineItem
+      operationId: deleteInvoiceLineItem
+      tags:
+      - InvoiceLineItem
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: lineItemId
+        required: true
+        description: The id of the InvoiceLineItem to delete
+        example: ili_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '204':
+          description: InvoiceLineItem deleted successfully
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

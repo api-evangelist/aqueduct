@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner PriceModel API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: PriceModel
+paths:
+  /pricemodels:
+    post:
+      summary: Create a new price model
+      operationId: createPriceModel
+      tags:
+      - PriceModel
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the price model.
+                  example: Flat rate with included usage plus overage
+                namedPriceFunctions:
+                  $ref: '#/components/schemas/NamedPriceFunctions'
+      responses:
+        '201':
+          description: Returns the created PriceModel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceModel'
+    get:
+      summary: List all price models
+      operationId: listPriceModels
+      tags:
+      - PriceModel
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Returns all price models
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PriceModel'
+  /pricemodels/{pricemodelId}:
+    get:
+      summary: Retrieve a PriceModel
+      tags:
+      - PriceModel
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: pricemodelId
+        required: true
+        description: The id of the PriceModel to retrieve
+        example: prmod_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Returns the requested PriceModel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceModel'
+  /pricemodels/{pricemodelId}/preview:
+    post:
+      summary: Preview the output of a PriceModel
+      tags:
+      - PriceModel
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: pricemodelId
+        required: true
+        description: The id of the PriceModel to preview
+        example: prmod_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                variables:
+                  type: object
+                  description: An object containing the inputs the PriceModel expects.
+                billingPeriod:
+                  type: object
+                  description: An object representing the billing period. This is required if the PriceModel includes a metered NamedPriceFunction.
+                  properties:
+                    startDate:
+                      description: Time at which the the billing period started or is scheduled to start.
+                      format: date
+                      example: '2022-04-02T00:00:00.000Z'
+                    endDate:
+                      description: Time at which the the billing period ended or is scheduled to end.
+                      format: date
+                      example: '2022-04-02T00:00:00.000Z'
+                accountOwnerId:
+                  type: string
+                  description: The id of the accountOwner to use when retrieving meter data
+      responses:
+        '200':
+          description: Returns the generated line items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItems'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

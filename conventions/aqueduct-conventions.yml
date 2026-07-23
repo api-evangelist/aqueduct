@@ -1,0 +1,58 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.tryaqueduct.com/reference/
+docs:
+  authentication: https://docs.tryaqueduct.com/reference/authentication
+  idempotency: https://docs.tryaqueduct.com/reference/idempotency
+  webhooks: https://docs.tryaqueduct.com/reference/webhooks-1
+summary: >-
+  Cross-cutting request/response semantics for the Aqueduct billing API, captured
+  from the ReadMe developer docs and derived from the OpenAPI. REST over HTTPS,
+  JSON bodies, API-key auth, and a documented idempotency contract on write
+  operations.
+authentication:
+  style: api-key
+  location: header
+  header: Authorization
+  format: 'Api-Key {key}'
+  transport: https-only
+  see: authentication/aqueduct-authentication.yml
+idempotency:
+  supported: true
+  mechanism: header
+  header: Idempotency-Key
+  applies_to: POST requests
+  retention: at least 24 hours (cache occasionally pruned)
+  behavior: >-
+    Aqueduct stores the response code and body of the fully executed request for
+    a given Idempotency-Key; subsequent requests with the same key return the
+    stored result without re-executing. GET and DELETE are inherently idempotent
+    and need no key.
+  resource_level:
+    field: idempotencyKey
+    applies_to: BillableEvent resources
+    note: >-
+      Each BillableEvent in a batch may carry its own idempotencyKey so events are
+      not double-counted.
+pagination:
+  supported: false
+  note: >-
+    List endpoints (getInvoices, getAccountOwners, listPriceModels, etc.) filter
+    by query parameters (customerId, accountType, externalId, tag, servicePeriod
+    windows) but do not document cursor/offset pagination.
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.tryaqueduct.com/v1
+error_envelope:
+  documented: partial
+  note: >-
+    The OpenAPI documents only success responses (200/201/204). Docs note some
+    operations return 400 on failure (e.g. refundInvoice when a refund is not
+    possible). No RFC 9457 problem+json envelope is published.
+webhooks:
+  supported: true
+  delivery: POST to a registered endpoint with a shared secret
+  envelope: '{ createdAt, type, object }'
+  events: [provisioning.start, provisioning.end, invoice.paid]
+  see: asyncapi/aqueduct-webhooks-asyncapi.yml

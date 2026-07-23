@@ -1,27 +1,274 @@
 aid: aqueduct
 name: Aqueduct
-description: 'Aqueduct is a company surfaced as a portfolio company of bain-capital-ventures and added
-  to the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Aqueduct is a fintech billing platform that equips B2B businesses with billing,
+  invoicing, quoting, and accounting for usage-based and metered business models.
+  Developers configure how they collect money as a PriceModel (composed of price
+  functions such as per-unit meters), send billable usage events, and let Aqueduct
+  create invoices and subscriptions, send invoices by email, issue refunds, and
+  auto-provision access via signed webhooks. The REST API lives at
+  api.tryaqueduct.com/v1 with API-key authentication and a documented
+  Idempotency-Key contract. Founded 2020 in Bellevue, WA and backed by Bain Capital
+  Ventures and Conversion Capital, Aqueduct was acquired by Stripe in August 2024;
+  its ReadMe developer portal at docs.tryaqueduct.com remains live.
 url: https://raw.githubusercontent.com/api-evangelist/aqueduct/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - bain-capital-ventures
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+x-acquired-by: stripe
+x-acquired-date: '2024-08-03'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://files.readme.io/9e3d7fe-small-Logo_4.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Fintech
-apis: []
+- Billing
+- Invoicing
+- Metering
+- Usage-Based
+- Subscriptions
+- Payments
+- API
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: aqueduct:aqueduct-accountowner-api
+  name: Aqueduct AccountOwner API
+  description: The AccountOwner API from Aqueduct — 3 operation(s) for accountowner.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - AccountOwner
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-accountowner-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-bill-api
+  name: Aqueduct Bill API
+  description: The Bill API from Aqueduct — 2 operation(s) for bill.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - Bill
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-bill-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-invoice-api
+  name: Aqueduct Invoice API
+  description: The Invoice API from Aqueduct — 6 operation(s) for invoice.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - Invoice
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-invoice-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-invoicelineitem-api
+  name: Aqueduct InvoiceLineItem API
+  description: The InvoiceLineItem API from Aqueduct — 1 operation(s) for invoicelineitem.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - InvoiceLineItem
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-invoicelineitem-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-pricemodel-api
+  name: Aqueduct PriceModel API
+  description: The PriceModel API from Aqueduct — 3 operation(s) for pricemodel.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - PriceModel
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-pricemodel-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-productpurchases-api
+  name: Aqueduct ProductPurchases API
+  description: The ProductPurchases API from Aqueduct — 1 operation(s) for productpurchases.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - ProductPurchases
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-productpurchases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-products-api
+  name: Aqueduct Products API
+  description: The Products API from Aqueduct — 2 operation(s) for products.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-products-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-provisioning-api
+  name: Aqueduct Provisioning API
+  description: The Provisioning API from Aqueduct — 1 operation(s) for provisioning.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - Provisioning
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-provisioning-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-subscriptions-api
+  name: Aqueduct Subscriptions API
+  description: The Subscriptions API from Aqueduct — 2 operation(s) for subscriptions.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-webhooks-api
+  name: Aqueduct Webhooks API
+  description: The Webhooks API from Aqueduct — 1 operation(s) for webhooks.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
 common:
+- type: DeveloperPortal
+  url: https://docs.tryaqueduct.com/reference
+- type: Documentation
+  url: https://docs.tryaqueduct.com/reference
+- type: APIReference
+  url: https://docs.tryaqueduct.com/reference
+- type: GettingStarted
+  url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+- type: Authentication
+  url: authentication/aqueduct-authentication.yml
+- type: Conventions
+  url: conventions/aqueduct-conventions.yml
+- type: Idempotency
+  url: conventions/aqueduct-conventions.yml
+- type: Webhooks
+  url: asyncapi/aqueduct-webhooks-asyncapi.yml
+- type: AsyncAPI
+  url: asyncapi/aqueduct-webhooks-asyncapi.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: MCPServer
+  url: mcp/aqueduct-mcp.yml
+- type: LLMsTxt
+  url: llms/aqueduct-llms.txt
+- type: Conformance
+  url: conformance/aqueduct-conformance.yml
+- type: Lifecycle
+  url: lifecycle/aqueduct-lifecycle.yml
+- type: DomainSecurity
+  url: security/aqueduct-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/aqueduct-agentic-access.yml
 - type: Website
   url: https://www.tryaqueduct.com/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

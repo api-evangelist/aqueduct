@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner ProductPurchases API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: ProductPurchases
+paths:
+  /productpurchases:
+    get:
+      summary: Get all product purchases in an optional time range based on the service period start or billing end dates associated with the product purchase
+      operationId: getProductPurchases
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: query
+        name: servicePeriodStart
+        required: false
+        description: (Optional) Filter product purchases based on service period start date, given with "gt", "lt", "gte", or "lte"
+        example: ?servicePeriodStart[gte]=2022-09-01T13:00:00.000Z
+        schema:
+          type: string
+      - in: query
+        name: servicePeriodEnd
+        required: false
+        description: (Optional) Filter product purchases based on service period end date, given with "gt", "lt", "gte", or "lte"
+        example: ?servicePeriodEnd[lte]=2022-09-01T13:00:00.000Z
+        schema:
+          type: string
+      tags:
+      - ProductPurchases
+      responses:
+        '200':
+          description: Returns a list of the requested Product Purchases
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductPurchase'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

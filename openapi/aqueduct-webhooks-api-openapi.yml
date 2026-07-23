@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner Webhooks API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: Webhooks
+paths:
+  /webhookendpoints:
+    post:
+      summary: Creates a webhook endpoint.
+      operationId: createwebhook
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  $ref: '#/components/schemas/webhookDescription'
+                url:
+                  $ref: '#/components/schemas/webhookUrl'
+                enabledEvents:
+                  $ref: '#/components/schemas/webhookEnabledEvents'
+      responses:
+        '201':
+          description: Returns the created webhook endpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEndpoint'
+    get:
+      summary: List all webhook endpoints
+      operationId: listwebhooks
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Returns an array of your webhook endpoints. Aqueduct current supports a maximum of 100 unique endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEndpoints'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

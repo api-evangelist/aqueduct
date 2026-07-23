@@ -1,0 +1,72 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/aqueduct-openapi.json
+notes: >-
+  Entity-relationship graph derived from the Aqueduct OpenAPI: resource tags,
+  path structure, and id-reference fields/query parameters. Relationships are
+  inferred from id fields (customerId, invoiceId, lineItemId, productId,
+  accountOwnerId, subscriptionId) and documented request/response shapes.
+entities:
+- name: AccountOwner
+  description: A customer being billed. Referenced elsewhere as customerId.
+  operations: [createAccountOwner, getAccountOwners, getAccountOwner, updateAccountOwner, createCustomerPortalLink]
+- name: Invoice
+  description: A bill issued to an account owner, containing line items.
+  operations: [createInvoice, getInvoices, getInvoice, sendInvoice, refundInvoice, voidInvoice]
+- name: InvoiceLineItem
+  description: A single charge line on an invoice.
+  operations: [createInvoiceLineItem, updateInvoiceLineItem, deleteInvoiceLineItem]
+- name: PriceModel
+  description: Expresses how much and how often to charge, via price functions.
+  operations: [createPriceModel, listPriceModels, getPriceModel, previewPriceModel]
+- name: Subscription
+  description: A recurring billing relationship created against a price model.
+  operations: [getSubscriptions, getSubscription, updateSubscription, deleteSubscription]
+- name: Product
+  description: A sellable product with associated purchases.
+  operations: [createProduct, getProduct, getProductPurchases]
+- name: BillableEvent
+  description: Usage/metering events sent to Aqueduct to bill against.
+  operations: [sendBillableEvents, getBillableEvents, deleteBillableEvents]
+- name: Bill
+  description: Billing action that charges against price models, creating invoices/subscriptions as needed.
+  operations: [bill]
+- name: WebhookEndpoint
+  description: A registered endpoint receiving signed event callbacks.
+  operations: [createwebhook, listwebhooks]
+- name: Provisioning
+  description: A provisioning window (start/end) delivered via webhooks.
+  operations: [getProvisioning]
+relationships:
+- from: Invoice
+  to: AccountOwner
+  type: belongs_to
+  via: customerId
+- from: Invoice
+  to: InvoiceLineItem
+  type: has_many
+  via: lineItems
+- from: InvoiceLineItem
+  to: Invoice
+  type: belongs_to
+  via: invoiceId
+- from: Subscription
+  to: AccountOwner
+  type: belongs_to
+  via: accountOwnerId
+- from: Subscription
+  to: PriceModel
+  type: belongs_to
+  via: priceModel
+- from: ProductPurchase
+  to: Product
+  type: belongs_to
+  via: productId
+- from: BillableEvent
+  to: AccountOwner
+  type: belongs_to
+  via: customerId
+- from: Bill
+  to: PriceModel
+  type: references
+  via: priceModel

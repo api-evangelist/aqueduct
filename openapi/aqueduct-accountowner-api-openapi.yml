@@ -1,0 +1,230 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: AccountOwner
+paths:
+  /accountOwners:
+    post:
+      summary: Create a new account owner
+      operationId: createAccountOwner
+      tags:
+      - AccountOwner
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the account owner (person or organization)
+                  example: Bobby Buyer
+                email:
+                  type: string
+                  description: Contact email address - usually the billing email of the organization
+                  example: bobby@foocorp.com
+                phoneNumber:
+                  type: string
+                  example: 555-555-5555
+                address:
+                  $ref: '#/components/schemas/Address'
+                tags:
+                  type: array
+                  description: tags to associate with this account owner
+                  items:
+                    type: string
+                  example:
+                  - customer
+                  - payout-target
+                accountType:
+                  type: string
+                  description: AccountsReceivable (for customers), PayoutAccount. Can also be CreditsGivenAccount, CreditsReceivedAccount, CashAccount, ProcessingFeesAccount, RevenueAccount, but generally these are not created via API
+                stripeCustomerId:
+                  $ref: '#/components/schemas/stripeCustomerId'
+                intacctCustomerId:
+                  type: string
+                  description: The Sage Intacct customer Id associated with this account owner. Will be used for syncing invoices
+                  example: C1234
+                parentAccountOwnerId:
+                  description: ID of the AccountOwner that acts as the parent of this AccountOwner
+                  example: owner_01FSSVRVGQ7GGB13815DE3F518
+                payerAccountOwnerId:
+                  description: ID of the AccountOwner that pays on behalf of this AccountOwner. Note that all invoices will be sent to the payer directly.
+                  example: owner_01FSSVRVGQ7GGB13815DE3F518
+                externalId:
+                  $ref: '#/components/schemas/externalId'
+                  type: string
+      responses:
+        '201':
+          description: Account is created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountOwner'
+    get:
+      summary: Retrieve a list of account owners
+      operationId: getAccountOwners
+      tags:
+      - AccountOwner
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: query
+        name: accountType
+        required: false
+        description: The account type to fetch
+        example: PayoutAccount
+        schema:
+          type: string
+      - in: query
+        name: tag
+        required: false
+        description: The tag to filter by
+        schema:
+          type: string
+      - in: query
+        name: externalId
+        required: false
+        description: Used to get the AccountOwners matching the provided externalId
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a list of account owners that matched the parameters provided
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountOwner'
+  /accountOwners/{accountOwnerId}:
+    get:
+      summary: Retrieve an AccountOwner
+      operationId: getAccountOwner
+      tags:
+      - AccountOwner
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: accountOwnerId
+        required: true
+        description: The id of the AccountOwner to retrieve
+        example: acct_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns the requested AccountOwner
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountOwner'
+    post:
+      summary: Update an AccountOwner
+      operationId: updateAccountOwner
+      tags:
+      - AccountOwner
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: accountOwnerId
+        required: true
+        description: The id of the AccountOwner to update
+        example: acct_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  $ref: '#/components/schemas/accountOwnerName'
+                email:
+                  type: string
+                  description: Contact email address - usually the billing email of the organization
+                  example: bobby@foocorp.com
+                phoneNumber:
+                  type: string
+                  example: 555-555-5555
+                stripeCustomerId:
+                  $ref: '#/components/schemas/stripeCustomerId'
+                address:
+                  $ref: '#/components/schemas/Address'
+                tags:
+                  $ref: '#/components/schemas/AccountOwnerTags'
+                intacctCustomerId:
+                  type: string
+                  description: The Sage Intacct customer Id associated with this account owner. Will be used for syncing invoices
+                  example: C1234
+                parentAccountOwnerId:
+                  description: ID of the AccountOwner that acts as the parent of this AccountOwner
+                  example: owner_01FSSVRVGQ7GGB13815DE3F518
+                payerAccountOwnerId:
+                  description: ID of the AccountOwner that pays on behalf of this AccountOwner. Note that all invoices will be sent to the payer directly.
+                  example: owner_01FSSVRVGQ7GGB13815DE3F518
+      responses:
+        '200':
+          description: Returns the AccountOwner that was updated in the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountOwner'
+  /accountOwners/{accountOwnerId}/customerPortal:
+    post:
+      summary: Generate a Customer Portal link.
+      operationId: createCustomerPortalLink
+      tags:
+      - AccountOwner
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: accountOwnerId
+        required: true
+        description: The id of the AccountOwner (customer)
+        example: owner_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expiresAt:
+                  type: string
+                  description: DateTime corresponding to when the Customer Portal session should expire. Defaults to 30 minutes from now. Pass in `null` to have the session never expire
+      responses:
+        '200':
+          description: Customer Portal session successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  portalUrl:
+                    type: string
+                    description: link to the Customer Portal
+                  expiresAt:
+                    type: string
+                    description: DateTime representing when the URL will expire
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

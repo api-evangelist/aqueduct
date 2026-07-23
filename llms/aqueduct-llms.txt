@@ -1,0 +1,45 @@
+# Aqueduct Documentation
+
+> Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+
+## API Reference
+- [Developer quickstart](https://docs.tryaqueduct.com/reference/getting-started-with-your-api.md): 15 minute practical tutorial where we create a metered business model and issue an invoice.
+- [How Aqueduct works](https://docs.tryaqueduct.com/reference/learn-how-aqueduct-works.md)
+- [Price functions types](https://docs.tryaqueduct.com/reference/price-functions-types.md)
+- [Common business models](https://docs.tryaqueduct.com/reference/common-business-models-on-aqueduct.md)
+- [Authentication](https://docs.tryaqueduct.com/reference/authentication.md)
+- [Auto provisioning with webhooks](https://docs.tryaqueduct.com/reference/webhooks-1.md)
+- [Types of webhook events](https://docs.tryaqueduct.com/reference/types-of-webhook-events.md)
+- [Idempotency](https://docs.tryaqueduct.com/reference/idempotency.md)
+- [Create a new invoice](https://docs.tryaqueduct.com/reference/createinvoice.md)
+- [Retrieve a list of invoices](https://docs.tryaqueduct.com/reference/getinvoices.md)
+- [Add a new line item](https://docs.tryaqueduct.com/reference/createinvoicelineitem.md)
+- [Send an Invoice via email](https://docs.tryaqueduct.com/reference/sendinvoice.md): Note that all the parameters to this endpoint are overrides – there are default parameters provided from the Organization's email settings
+- [Refund an Invoice](https://docs.tryaqueduct.com/reference/refundinvoice.md): Refunds an invoice if possible (e.g. credit card payments). Will otherwise return a 400
+- [Void an Invoice](https://docs.tryaqueduct.com/reference/voidinvoice.md): Marks an invoice as void.
+- [Retrieve an Invoice](https://docs.tryaqueduct.com/reference/getinvoice.md)
+- [Create a new account owner](https://docs.tryaqueduct.com/reference/createaccountowner.md)
+- [Retrieve a list of account owners](https://docs.tryaqueduct.com/reference/getaccountowners.md)
+- [Retrieve an AccountOwner](https://docs.tryaqueduct.com/reference/getaccountowner.md)
+- [Update an AccountOwner](https://docs.tryaqueduct.com/reference/updateaccountowner.md)
+- [Generate a Customer Portal link.](https://docs.tryaqueduct.com/reference/createcustomerportallink.md)
+- [Update an InvoiceLineItem](https://docs.tryaqueduct.com/reference/updateinvoicelineitem.md)
+- [Delete an InvoiceLineItem](https://docs.tryaqueduct.com/reference/deleteinvoicelineitem.md)
+- [Bill against price models, and automatically create an invoice and subscription as needed](https://docs.tryaqueduct.com/reference/bill-1.md)
+- [Send events you may want to bill against Aqueduct](https://docs.tryaqueduct.com/reference/sendbillableevents.md)
+- [Retrieve billable events that have been sent to Aqueduct](https://docs.tryaqueduct.com/reference/getbillableevents.md)
+- [Delete one or more BillableEvents](https://docs.tryaqueduct.com/reference/deletebillableevents.md)
+- [Create a new product](https://docs.tryaqueduct.com/reference/createproduct.md)
+- [Retrieve a product](https://docs.tryaqueduct.com/reference/getproduct.md)
+- [Get all product purchases in an optional time range based on the service period start or billing end dates associated with the product purchase](https://docs.tryaqueduct.com/reference/getproductpurchases.md)
+- [Create a new price model](https://docs.tryaqueduct.com/reference/createpricemodel.md)
+- [List all price models](https://docs.tryaqueduct.com/reference/listpricemodels.md)
+- [Retrieve a PriceModel](https://docs.tryaqueduct.com/reference/get_pricemodels-pricemodelid.md)
+- [Preview the output of a PriceModel](https://docs.tryaqueduct.com/reference/post_pricemodels-pricemodelid-preview.md)
+- [Retrieve a list of subscriptions](https://docs.tryaqueduct.com/reference/get_subscriptions.md)
+- [Retrieve a subscription](https://docs.tryaqueduct.com/reference/get_subscriptions-subscriptionid.md)
+- [Update a subscription](https://docs.tryaqueduct.com/reference/updatesubscription.md)
+- [Delete a Subscription](https://docs.tryaqueduct.com/reference/deletesubscription.md)
+- [Creates a webhook endpoint.](https://docs.tryaqueduct.com/reference/createwebhook.md)
+- [List all webhook endpoints](https://docs.tryaqueduct.com/reference/listwebhooks.md)
+- [Retrieve a Provisioning object](https://docs.tryaqueduct.com/reference/getprovisioning.md)

@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner Provisioning API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: Provisioning
+paths:
+  /provisioning/{provisioningId}:
+    get:
+      summary: Retrieve a Provisioning object
+      operationId: getProvisioning
+      tags:
+      - Provisioning
+      parameters:
+      - name: provisioningId
+        in: path
+        required: true
+        description: The id of the provisioning object to retrieve
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Retrieved Provisioning object successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provisioning'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

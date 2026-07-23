@@ -1,0 +1,170 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner Bill API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: Bill
+paths:
+  /bill:
+    post:
+      summary: Bill against price models, and automatically create an invoice and subscription as needed
+      operationId: bill
+      tags:
+      - Bill
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - customerId
+              - productId
+              properties:
+                customerId:
+                  type: string
+                  description: Id of the account owner being billed
+                  example: owner_01FSSVRVGQ7GGB13815DE3F518
+                productId:
+                  type: string
+                  description: Id of the Product being billed for
+                  example: prod_23481242
+                priceModelId:
+                  type: string
+                  description: Id of the PriceModel being billed for. Either priceModelId or oneOffLineItems must be provided.
+                  example: prmod_23487324
+                dueDate:
+                  type: string
+                  description: (Optional) The date that the generated invoice, if any, should be due. Defaults to 30 days after
+                  example: '2022-11-02T00:00:00.000Z'
+                oneOffLineItems:
+                  $ref: '#/components/schemas/OneOffLineItems'
+                firstBillingDate:
+                  $ref: '#/components/schemas/firstBillingDate'
+                variables:
+                  type: object
+                  description: An object representing the arguments supplied to the PriceModel. Each key in the object is a NamedPriceFunction Id, and the value is an object representing the arguments to that specific NamedPriceFunction.
+                  example:
+                    price_234535:
+                      percent: 20
+                    price_456789:
+                      unitCount: 3
+                metadata:
+                  type: object
+                  description: An object representing additional metadata to be attached to any invoices that are created from /bill/
+                  example:
+                    customerContractId: B81A52
+                inArrears:
+                  type: boolean
+                  description: True means that any subscription created will be billed in arrears i.e. at the end of the billing cycle. False means the subscription will be billed at the beginning of the billing cycle.
+                  example: true
+                description:
+                  type: string
+                  description: A description that will be added as the invoice memo
+                  example: For the contract as discussed
+                contractStartDate:
+                  type: string
+                  format: date
+                  description: Time at which the contract started or is scheduled to start. Used for revenue recognition, and in the case of a subscription, also used for backdating the start date.
+                contractEndDate:
+                  type: string
+                  format: date
+                  description: Time at which the contract is scheduled to end.
+                invoiceAsDraft:
+                  type: boolean
+                  description: True by default - any invoices created are a draft invoice and must be sent/finalized first. False means we create a finalized invoice
+                  example: true
+      responses:
+        '200':
+          description: Successfully billed the AccountOwner. Will create an invoice or subscription, depending on the price model provided.
+  /billableEvents:
+    post:
+      summary: Send events you may want to bill against Aqueduct
+      operationId: sendBillableEvents
+      tags:
+      - Bill
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                eventName:
+                  type: string
+                  description: This is the name that's referenced by the price function that billing against this event. You can create billable events and then apply a price function to the event.
+                eventType:
+                  type: string
+                  description: Determines the schema enum for the event. Possible values are "count"
+                customerId:
+                  type: string
+                  description: The id of the account owner that should be billed in association with this billable event.
+                data:
+                  type: object
+                  description: Batch events expect count which is a number, optionally a description
+      responses:
+        '204':
+          description: Billing event received successfully
+    get:
+      summary: Retrieve billable events that have been sent to Aqueduct
+      operationId: getBillableEvents
+      tags:
+      - Bill
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: query
+        name: eventName
+        required: true
+        description: The eventName to filter by
+        schema:
+          type: string
+        example: cpu-hours
+      - in: query
+        name: customerId
+        required: true
+        description: The AccountOwner Id to filter by
+        schema:
+          type: string
+        example: owner_3435343
+      responses:
+        '200':
+          description: Returns a list of BillableEvents that matched the parameters provided
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BillableEvent'
+    delete:
+      summary: Delete one or more BillableEvents
+      operationId: deleteBillableEvents
+      tags:
+      - Bill
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: query
+        name: eventIds
+        required: true
+        description: The ids of the BillableEvents to delete
+        example:
+        - bevth_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '204':
+          description: BillableEvents deleted successfully
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

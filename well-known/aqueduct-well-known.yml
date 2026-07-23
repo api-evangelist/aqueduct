@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of /.well-known/ across Aqueduct hosts
+notes: >-
+  No /.well-known/ discovery documents are published. The public developer
+  surface is a ReadMe.io site at docs.tryaqueduct.com; the API host
+  api.tryaqueduct.com and dashboard.tryaqueduct.com did not resolve at probe
+  time (the company was acquired by Stripe in August 2024). Absence recorded as
+  valid data.
+hosts:
+- host: https://docs.tryaqueduct.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.tryaqueduct.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+  - path: /.well-known/openid-configuration
+    status: 0

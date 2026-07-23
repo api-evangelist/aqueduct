@@ -1,0 +1,96 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/aqueduct-openapi.json
+notes: No official hosted MCP server is published by Aqueduct. This is a candidate tool list derived one-per-operation
+  from the OpenAPI, suitable for generating an MCP server that proxies the REST API.
+server:
+  name: aqueduct
+  transport: http
+  url: null
+tools:
+- name: createInvoice
+  description: Create a new invoice
+  source_operation: openapi/aqueduct-openapi.json#createInvoice
+- name: getInvoices
+  description: Retrieve a list of invoices
+  source_operation: openapi/aqueduct-openapi.json#getInvoices
+- name: createInvoiceLineItem
+  description: Add a new line item
+  source_operation: openapi/aqueduct-openapi.json#createInvoiceLineItem
+- name: sendInvoice
+  description: Send an Invoice via email
+  source_operation: openapi/aqueduct-openapi.json#sendInvoice
+- name: refundInvoice
+  description: Refund an Invoice
+  source_operation: openapi/aqueduct-openapi.json#refundInvoice
+- name: voidInvoice
+  description: Void an Invoice
+  source_operation: openapi/aqueduct-openapi.json#voidInvoice
+- name: getInvoice
+  description: Retrieve an Invoice
+  source_operation: openapi/aqueduct-openapi.json#getInvoice
+- name: createAccountOwner
+  description: Create a new account owner
+  source_operation: openapi/aqueduct-openapi.json#createAccountOwner
+- name: getAccountOwners
+  description: Retrieve a list of account owners
+  source_operation: openapi/aqueduct-openapi.json#getAccountOwners
+- name: getAccountOwner
+  description: Retrieve an AccountOwner
+  source_operation: openapi/aqueduct-openapi.json#getAccountOwner
+- name: updateAccountOwner
+  description: Update an AccountOwner
+  source_operation: openapi/aqueduct-openapi.json#updateAccountOwner
+- name: createCustomerPortalLink
+  description: Generate a Customer Portal link.
+  source_operation: openapi/aqueduct-openapi.json#createCustomerPortalLink
+- name: updateInvoiceLineItem
+  description: Update an InvoiceLineItem
+  source_operation: openapi/aqueduct-openapi.json#updateInvoiceLineItem
+- name: deleteInvoiceLineItem
+  description: Delete an InvoiceLineItem
+  source_operation: openapi/aqueduct-openapi.json#deleteInvoiceLineItem
+- name: bill
+  description: Bill against price models, and automatically create an invoice and subscription as needed
+  source_operation: openapi/aqueduct-openapi.json#bill
+- name: sendBillableEvents
+  description: Send events you may want to bill against Aqueduct
+  source_operation: openapi/aqueduct-openapi.json#sendBillableEvents
+- name: getBillableEvents
+  description: Retrieve billable events that have been sent to Aqueduct
+  source_operation: openapi/aqueduct-openapi.json#getBillableEvents
+- name: deleteBillableEvents
+  description: Delete one or more BillableEvents
+  source_operation: openapi/aqueduct-openapi.json#deleteBillableEvents
+- name: createProduct
+  description: Create a new product
+  source_operation: openapi/aqueduct-openapi.json#createProduct
+- name: getProduct
+  description: Retrieve a product
+  source_operation: openapi/aqueduct-openapi.json#getProduct
+- name: getProductPurchases
+  description: Get all product purchases in an optional time range based on the service period start or
+    billing end dates associated with the product purchase
+  source_operation: openapi/aqueduct-openapi.json#getProductPurchases
+- name: createPriceModel
+  description: Create a new price model
+  source_operation: openapi/aqueduct-openapi.json#createPriceModel
+- name: listPriceModels
+  description: List all price models
+  source_operation: openapi/aqueduct-openapi.json#listPriceModels
+- name: updateSubscription
+  description: Update a subscription
+  source_operation: openapi/aqueduct-openapi.json#updateSubscription
+- name: deleteSubscription
+  description: Delete a Subscription
+  source_operation: openapi/aqueduct-openapi.json#deleteSubscription
+- name: createwebhook
+  description: Creates a webhook endpoint.
+  source_operation: openapi/aqueduct-openapi.json#createwebhook
+- name: listwebhooks
+  description: List all webhook endpoints
+  source_operation: openapi/aqueduct-openapi.json#listwebhooks
+- name: getProvisioning
+  description: Retrieve a Provisioning object
+  source_operation: openapi/aqueduct-openapi.json#getProvisioning

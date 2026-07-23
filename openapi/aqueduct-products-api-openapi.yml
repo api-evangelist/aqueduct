@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner Products API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: Products
+paths:
+  /products:
+    post:
+      summary: Create a new product
+      operationId: createProduct
+      security:
+      - bearerAuth: []
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the product
+                  example: Professional teams plan
+      responses:
+        '201':
+          description: Returns the created Product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /products/{productId}:
+    get:
+      summary: Retrieve a product
+      operationId: getProduct
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: productId
+        required: true
+        description: The id of the Product to retrieve
+        example: prod_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      tags:
+      - Products
+      responses:
+        '200':
+          description: Returns the requested Product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

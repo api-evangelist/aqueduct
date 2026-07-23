@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Aqueduct API Reference AccountOwner Subscriptions API
+  description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
+servers:
+- url: https://api.tryaqueduct.com/v1
+tags:
+- name: Subscriptions
+paths:
+  /subscriptions:
+    get:
+      summary: Retrieve a list of subscriptions
+      tags:
+      - Subscriptions
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Returns a list of all your subscriptions and recurring billings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscriptions'
+  /subscriptions/{subscriptionId}:
+    get:
+      summary: Retrieve a subscription
+      tags:
+      - Subscriptions
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: subscriptionId
+        required: true
+        description: The id of the subscription to retrieve
+        example: sub_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns the subscription for a valid id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    post:
+      summary: Update a subscription
+      operationId: updateSubscription
+      tags:
+      - Subscriptions
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: subscriptionId
+        required: true
+        description: The id of the subscription to retrieve
+        example: sub_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  $ref: '#/components/schemas/subscriptionName'
+                variables:
+                  type: object
+                  description: An object containing the inputs the PriceModel expects.
+                startDate:
+                  type: string
+                  description: Time at which the subscription started or is scheduled to start. Can also be used for backdating
+                  format: date
+                  example: '2022-04-02T00:00:00.000Z'
+                endDate:
+                  $ref: '#/components/schemas/subscriptionEndDate'
+      responses:
+        '200':
+          description: Returns the Subscription that was updated in the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    delete:
+      summary: Delete a Subscription
+      operationId: deleteSubscription
+      tags:
+      - Subscriptions
+      security:
+      - bearerAuth: []
+      parameters:
+      - in: path
+        name: subscriptionId
+        required: true
+        description: The id of the Subscription to delete
+        example: sub_01FSSVRVGQ7GGB13815DE3F518
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Subscription deleted successfully
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header

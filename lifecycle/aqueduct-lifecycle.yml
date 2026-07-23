@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.tryaqueduct.com/reference/
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.tryaqueduct.com/v1
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation or Sunset/Deprecation (RFC 8594) policy found.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+notes: >-
+  Aqueduct exposes a single URI-path API version (v1). No status page, SLA, or
+  deprecation policy is published. The company was acquired by Stripe in August
+  2024; the docs.tryaqueduct.com developer portal remains live while the primary
+  website and dashboard hosts no longer resolve.

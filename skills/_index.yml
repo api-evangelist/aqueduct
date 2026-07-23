@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/aqueduct-openapi.json
+skills:
+- file: aqueduct-metered-billing-setup.md
+  name: Set up usage-based billing on Aqueduct
+  api: openapi/aqueduct-openapi.json
+  operations: [createAccountOwner, createPriceModel, sendBillableEvents, bill, getInvoice]
+- file: aqueduct-invoice-and-collect.md
+  name: Issue and collect an invoice on Aqueduct
+  api: openapi/aqueduct-openapi.json
+  operations: [createInvoice, createInvoiceLineItem, sendInvoice, getInvoice, refundInvoice, voidInvoice]
+- file: aqueduct-provisioning-webhooks.md
+  name: Auto-provision on Aqueduct webhooks
+  api: openapi/aqueduct-openapi.json
+  operations: [createwebhook, listwebhooks, getProvisioning]
