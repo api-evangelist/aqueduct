@@ -233,6 +233,8 @@ apis:
   - type: DataModel
     url: data-model/aqueduct-data-model.yml
 common:
+- type: Overlay
+  url: overlays/aqueduct-openapi-overlay.yaml
 - type: DeveloperPortal
   url: https://docs.tryaqueduct.com/reference
 - type: Documentation
