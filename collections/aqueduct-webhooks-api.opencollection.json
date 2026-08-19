@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aqueduct API Reference AccountOwner Webhooks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all webhook endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/webhookendpoints"
+          },
+          "docs": "List all webhook endpoints"
+        },
+        {
+          "info": {
+            "name": "Creates a webhook endpoint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/webhookendpoints",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a webhook endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

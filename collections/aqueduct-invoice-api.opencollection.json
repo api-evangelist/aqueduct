@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aqueduct API Reference AccountOwner Invoice API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/invoices",
+            "params": [
+              {
+                "name": "accountOwnerId",
+                "value": "owner_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "query",
+                "description": "Used to get the invoices for a given AccountOwner (customer)"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "Used to get the invoices matching the provided externalId"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of invoices"
+        },
+        {
+          "info": {
+            "name": "Create a new invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new invoice"
+        },
+        {
+          "info": {
+            "name": "Add a new line item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/invoices/:invoiceId/invoicelineitems",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "inv_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The invoice id we're adding the new InvoiceLineItem to"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add a new line item"
+        },
+        {
+          "info": {
+            "name": "Send an Invoice via email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/invoices/:invoiceId/send",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "inv_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the Invoice to send"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Note that all the parameters to this endpoint are overrides – there are default parameters provided from the Organization's email settings"
+        },
+        {
+          "info": {
+            "name": "Refund an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/invoices/:invoiceId/refund",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "inv_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the Invoice to refund"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Refunds an invoice if possible (e.g. credit card payments). Will otherwise return a 400"
+        },
+        {
+          "info": {
+            "name": "Void an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/invoices/:invoiceId/void",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "inv_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the Invoice to void"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Marks an invoice as void."
+        },
+        {
+          "info": {
+            "name": "Retrieve an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "inv_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the Invoice to retrieve"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve an Invoice"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

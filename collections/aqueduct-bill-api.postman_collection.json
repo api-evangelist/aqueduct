@@ -1,0 +1,446 @@
+{
+  "item": [
+    {
+      "id": "3bf2e372-07c1-42b2-b15a-2bd64aad0070",
+      "name": "Bill",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1567973-0c61-4e33-a928-71305c9e1ba5",
+          "name": "Bill against price models, and automatically create an invoice and subscription as needed",
+          "request": {
+            "name": "Bill against price models, and automatically create an invoice and subscription as needed",
+            "description": {},
+            "url": {
+              "path": [
+                "bill"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"priceModelId\": \"<string>\",\n  \"dueDate\": \"<string>\",\n  \"oneOffLineItems\": {\n    \"value\": \"reference #/components/schemas/OneOffLineItems not found in the OpenAPI spec\"\n  },\n  \"firstBillingDate\": {\n    \"value\": \"reference #/components/schemas/firstBillingDate not found in the OpenAPI spec\"\n  },\n  \"variables\": \"<object>\",\n  \"metadata\": \"<object>\",\n  \"inArrears\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"contractStartDate\": \"<date>\",\n  \"contractEndDate\": \"<date>\",\n  \"invoiceAsDraft\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c0c7cf50-2895-47c7-89af-028bb90e04cb",
+              "name": "Successfully billed the AccountOwner. Will create an invoice or subscription, depending on the price model provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"owner_01FSSVRVGQ7GGB13815DE3F518\",\n  \"productId\": \"prod_23481242\",\n  \"priceModelId\": \"prmod_23487324\",\n  \"dueDate\": \"2022-11-02T00:00:00.000Z\",\n  \"oneOffLineItems\": {\n    \"value\": \"reference #/components/schemas/OneOffLineItems not found in the OpenAPI spec\"\n  },\n  \"firstBillingDate\": {\n    \"value\": \"reference #/components/schemas/firstBillingDate not found in the OpenAPI spec\"\n  },\n  \"variables\": {\n    \"price_234535\": {\n      \"percent\": 20\n    },\n    \"price_456789\": {\n      \"unitCount\": 3\n    }\n  },\n  \"metadata\": {\n    \"customerContractId\": \"B81A52\"\n  },\n  \"inArrears\": true,\n  \"description\": \"For the contract as discussed\",\n  \"contractStartDate\": \"<date>\",\n  \"contractEndDate\": \"<date>\",\n  \"invoiceAsDraft\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f30d5cb-0cbe-4420-8c9b-02e49b278640",
+          "name": "Send events you may want to bill against Aqueduct",
+          "request": {
+            "name": "Send events you may want to bill against Aqueduct",
+            "description": {},
+            "url": {
+              "path": [
+                "billableEvents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventName\": \"<string>\",\n  \"eventType\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"data\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "494475fa-d39e-47f4-97bb-fd113878c41d",
+              "name": "Billing event received successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billableEvents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventName\": \"<string>\",\n  \"eventType\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"data\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96e3210b-96cd-4121-94f2-4a426660a208",
+          "name": "Retrieve billable events that have been sent to Aqueduct",
+          "request": {
+            "name": "Retrieve billable events that have been sent to Aqueduct",
+            "description": {},
+            "url": {
+              "path": [
+                "billableEvents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "eventName",
+                  "value": "<string>",
+                  "description": "(Required) The eventName to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerId",
+                  "value": "<string>",
+                  "description": "(Required) The AccountOwner Id to filter by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44942a25-6ded-4947-9961-042eeb979cea",
+              "name": "Returns a list of BillableEvents that matched the parameters provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billableEvents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "eventName",
+                      "value": "cpu-hours"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "owner_3435343"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"reference #/components/schemas/BillableEvent not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference #/components/schemas/BillableEvent not found in the OpenAPI spec\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f38ce319-bbde-4290-b112-a4547735f1d9",
+          "name": "Delete one or more BillableEvents",
+          "request": {
+            "name": "Delete one or more BillableEvents",
+            "description": {},
+            "url": {
+              "path": [
+                "billableEvents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "eventIds",
+                  "value": "<string>",
+                  "description": "(Required) The ids of the BillableEvents to delete"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e431cd6-f7d5-41ea-b47a-03288a155840",
+              "name": "BillableEvents deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billableEvents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "eventIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryaqueduct.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "15574615-6b4d-4b27-a010-7b737549d5e8",
+    "name": "Aqueduct API Reference AccountOwner Bill API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.",
+      "type": "text/plain"
+    }
+  }
+}

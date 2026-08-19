@@ -94,3 +94,9 @@ tools:
 - name: getProvisioning
   description: Retrieve a Provisioning object
   source_operation: openapi/aqueduct-openapi.json#getProvisioning
+deployment:
+  mode: none
+  verified: derived
+  tools: 28
+  checked: '2026-08-12'
+  source: catalog MCP census

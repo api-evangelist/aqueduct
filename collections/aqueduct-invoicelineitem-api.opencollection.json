@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aqueduct API Reference AccountOwner InvoiceLineItem API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "InvoiceLineItem",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update an InvoiceLineItem",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/invoicelineitems/:lineItemId",
+            "params": [
+              {
+                "name": "lineItemId",
+                "value": "ili_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the InvoiceLineItem to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an InvoiceLineItem"
+        },
+        {
+          "info": {
+            "name": "Delete an InvoiceLineItem",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tryaqueduct.com/v1/invoicelineitems/:lineItemId",
+            "params": [
+              {
+                "name": "lineItemId",
+                "value": "ili_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the InvoiceLineItem to delete"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an InvoiceLineItem"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

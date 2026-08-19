@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aqueduct API Reference AccountOwner ProductPurchases API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProductPurchases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all product purchases in an optional time range based on the service period start or billing end dates associated with the product purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/productpurchases",
+            "params": [
+              {
+                "name": "servicePeriodStart",
+                "value": "?servicePeriodStart[gte]=2022-09-01T13:00:00.000Z",
+                "type": "query",
+                "description": "(Optional) Filter product purchases based on service period start date, given with \"gt\", \"lt\", \"gte\", or \"lte\""
+              },
+              {
+                "name": "servicePeriodEnd",
+                "value": "?servicePeriodEnd[lte]=2022-09-01T13:00:00.000Z",
+                "type": "query",
+                "description": "(Optional) Filter product purchases based on service period end date, given with \"gt\", \"lt\", \"gte\", or \"lte\""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all product purchases in an optional time range based on the service period start or billing end dates associated with the product purchase"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

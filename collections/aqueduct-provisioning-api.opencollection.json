@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aqueduct API Reference AccountOwner Provisioning API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Provisioning",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a Provisioning object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/provisioning/:provisioningId",
+            "params": [
+              {
+                "name": "provisioningId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the provisioning object to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieve a Provisioning object"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

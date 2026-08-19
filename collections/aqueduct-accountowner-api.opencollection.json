@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aqueduct API Reference AccountOwner API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AccountOwner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of account owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/accountOwners",
+            "params": [
+              {
+                "name": "accountType",
+                "value": "PayoutAccount",
+                "type": "query",
+                "description": "The account type to fetch"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "The tag to filter by"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "Used to get the AccountOwners matching the provided externalId"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a list of account owners"
+        },
+        {
+          "info": {
+            "name": "Create a new account owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/accountOwners",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new account owner"
+        },
+        {
+          "info": {
+            "name": "Retrieve an AccountOwner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/accountOwners/:accountOwnerId",
+            "params": [
+              {
+                "name": "accountOwnerId",
+                "value": "acct_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the AccountOwner to retrieve"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve an AccountOwner"
+        },
+        {
+          "info": {
+            "name": "Update an AccountOwner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/accountOwners/:accountOwnerId",
+            "params": [
+              {
+                "name": "accountOwnerId",
+                "value": "acct_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the AccountOwner to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an AccountOwner"
+        },
+        {
+          "info": {
+            "name": "Generate a Customer Portal link.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/accountOwners/:accountOwnerId/customerPortal",
+            "params": [
+              {
+                "name": "accountOwnerId",
+                "value": "owner_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "path",
+                "description": "The id of the AccountOwner (customer)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generate a Customer Portal link."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

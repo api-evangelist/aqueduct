@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aqueduct API Reference AccountOwner Bill API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bill",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bill against price models, and automatically create an invoice and subscription as needed",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/bill",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bill against price models, and automatically create an invoice and subscription as needed"
+        },
+        {
+          "info": {
+            "name": "Retrieve billable events that have been sent to Aqueduct",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryaqueduct.com/v1/billableEvents",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "cpu-hours",
+                "type": "query",
+                "description": "The eventName to filter by"
+              },
+              {
+                "name": "customerId",
+                "value": "owner_3435343",
+                "type": "query",
+                "description": "The AccountOwner Id to filter by"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve billable events that have been sent to Aqueduct"
+        },
+        {
+          "info": {
+            "name": "Send events you may want to bill against Aqueduct",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryaqueduct.com/v1/billableEvents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send events you may want to bill against Aqueduct"
+        },
+        {
+          "info": {
+            "name": "Delete one or more BillableEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tryaqueduct.com/v1/billableEvents",
+            "params": [
+              {
+                "name": "eventIds",
+                "value": "bevth_01FSSVRVGQ7GGB13815DE3F518",
+                "type": "query",
+                "description": "The ids of the BillableEvents to delete"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete one or more BillableEvents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

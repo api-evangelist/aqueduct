@@ -1,0 +1,117 @@
+{
+  "item": [
+    {
+      "id": "cfd0a65c-6e79-4f8b-8398-725e08b5d270",
+      "name": "Provisioning",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce995050-e71d-49ac-8bdc-8609753ea5a8",
+          "name": "Retrieve a Provisioning object",
+          "request": {
+            "name": "Retrieve a Provisioning object",
+            "description": {},
+            "url": {
+              "path": [
+                "provisioning",
+                ":provisioningId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provisioningId",
+                  "description": "(Required) The id of the provisioning object to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07cc98d8-77e1-42b1-aeba-d2d61783d5fd",
+              "name": "Retrieved Provisioning object successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "provisioning",
+                    ":provisioningId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provisioningId",
+                      "description": "(Required) The id of the provisioning object to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryaqueduct.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b0166f21-a8e1-41a8-9a18-725ed122054c",
+    "name": "Aqueduct API Reference AccountOwner Provisioning API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.",
+      "type": "text/plain"
+    }
+  }
+}

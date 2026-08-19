@@ -1,0 +1,638 @@
+{
+  "item": [
+    {
+      "id": "c3c8b55e-3232-4017-b217-77bdc763331b",
+      "name": "AccountOwner",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c47ce62-0369-43eb-bd1f-7b008cfbf3b4",
+          "name": "Create a new account owner",
+          "request": {
+            "name": "Create a new account owner",
+            "description": {},
+            "url": {
+              "path": [
+                "accountOwners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"address\": {\n    \"value\": \"reference #/components/schemas/Address not found in the OpenAPI spec\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountType\": \"<string>\",\n  \"stripeCustomerId\": {\n    \"value\": \"reference #/components/schemas/stripeCustomerId not found in the OpenAPI spec\"\n  },\n  \"intacctCustomerId\": \"<string>\",\n  \"parentAccountOwnerId\": {},\n  \"payerAccountOwnerId\": {},\n  \"externalId\": {\n    \"value\": \"reference #/components/schemas/externalId not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a403aa56-ee3e-43ab-b6b1-88b09a2cb0d0",
+              "name": "Account is created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accountOwners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Bobby Buyer\",\n  \"email\": \"bobby@foocorp.com\",\n  \"phoneNumber\": \"555-555-5555\",\n  \"address\": {\n    \"value\": \"reference #/components/schemas/Address not found in the OpenAPI spec\"\n  },\n  \"tags\": [\n    \"customer\",\n    \"payout-target\"\n  ],\n  \"accountType\": \"<string>\",\n  \"stripeCustomerId\": {\n    \"value\": \"reference #/components/schemas/stripeCustomerId not found in the OpenAPI spec\"\n  },\n  \"intacctCustomerId\": \"C1234\",\n  \"parentAccountOwnerId\": {},\n  \"payerAccountOwnerId\": {},\n  \"externalId\": {\n    \"value\": \"reference #/components/schemas/externalId not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e8643a7-3df2-430b-8c71-270af7193093",
+          "name": "Retrieve a list of account owners",
+          "request": {
+            "name": "Retrieve a list of account owners",
+            "description": {},
+            "url": {
+              "path": [
+                "accountOwners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountType",
+                  "value": "<string>",
+                  "description": "The account type to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "The tag to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "externalId",
+                  "value": "<string>",
+                  "description": "Used to get the AccountOwners matching the provided externalId"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6cf23a4c-ba21-469f-87f7-43f83449ee1b",
+              "name": "Returns a list of account owners that matched the parameters provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accountOwners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountType",
+                      "value": "PayoutAccount"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"reference #/components/schemas/AccountOwner not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference #/components/schemas/AccountOwner not found in the OpenAPI spec\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7a510ef-c89e-450d-8050-2849c3feca0e",
+          "name": "Retrieve an AccountOwner",
+          "request": {
+            "name": "Retrieve an AccountOwner",
+            "description": {},
+            "url": {
+              "path": [
+                "accountOwners",
+                ":accountOwnerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountOwnerId",
+                  "description": "(Required) The id of the AccountOwner to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a852cd00-ff9e-4332-ae95-d7ded1ae5eba",
+              "name": "Returns the requested AccountOwner",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accountOwners",
+                    ":accountOwnerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountOwnerId",
+                      "description": "(Required) The id of the AccountOwner to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2272d8ef-407c-47db-bf73-1fea175c6f78",
+          "name": "Update an AccountOwner",
+          "request": {
+            "name": "Update an AccountOwner",
+            "description": {},
+            "url": {
+              "path": [
+                "accountOwners",
+                ":accountOwnerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountOwnerId",
+                  "description": "(Required) The id of the AccountOwner to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"value\": \"reference #/components/schemas/accountOwnerName not found in the OpenAPI spec\"\n  },\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"stripeCustomerId\": {\n    \"value\": \"reference #/components/schemas/stripeCustomerId not found in the OpenAPI spec\"\n  },\n  \"address\": {\n    \"value\": \"reference #/components/schemas/Address not found in the OpenAPI spec\"\n  },\n  \"tags\": {\n    \"value\": \"reference #/components/schemas/AccountOwnerTags not found in the OpenAPI spec\"\n  },\n  \"intacctCustomerId\": \"<string>\",\n  \"parentAccountOwnerId\": {},\n  \"payerAccountOwnerId\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb0ad7b1-5db1-4394-9a38-1d778c47b3b9",
+              "name": "Returns the AccountOwner that was updated in the request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accountOwners",
+                    ":accountOwnerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountOwnerId",
+                      "description": "(Required) The id of the AccountOwner to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"value\": \"reference #/components/schemas/accountOwnerName not found in the OpenAPI spec\"\n  },\n  \"email\": \"bobby@foocorp.com\",\n  \"phoneNumber\": \"555-555-5555\",\n  \"stripeCustomerId\": {\n    \"value\": \"reference #/components/schemas/stripeCustomerId not found in the OpenAPI spec\"\n  },\n  \"address\": {\n    \"value\": \"reference #/components/schemas/Address not found in the OpenAPI spec\"\n  },\n  \"tags\": {\n    \"value\": \"reference #/components/schemas/AccountOwnerTags not found in the OpenAPI spec\"\n  },\n  \"intacctCustomerId\": \"C1234\",\n  \"parentAccountOwnerId\": {},\n  \"payerAccountOwnerId\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28956218-bdaf-4e0c-b97e-8273ea7d61c6",
+          "name": "Generate a Customer Portal link.",
+          "request": {
+            "name": "Generate a Customer Portal link.",
+            "description": {},
+            "url": {
+              "path": [
+                "accountOwners",
+                ":accountOwnerId",
+                "customerPortal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountOwnerId",
+                  "description": "(Required) The id of the AccountOwner (customer)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expiresAt\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "adf7291d-a1d4-4fd8-86a1-4d3626047072",
+              "name": "Customer Portal session successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accountOwners",
+                    ":accountOwnerId",
+                    "customerPortal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountOwnerId",
+                      "description": "(Required) The id of the AccountOwner (customer)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expiresAt\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"portalUrl\": \"string\",\n  \"expiresAt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryaqueduct.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a529e620-e5a4-4b8a-9639-dd65bfaf4994",
+    "name": "Aqueduct API Reference AccountOwner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.",
+      "type": "text/plain"
+    }
+  }
+}
