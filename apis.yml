@@ -43,6 +43,15 @@ tags:
 - Invoicing
 - Metering
 - Usage-Based
+- Subscription
+- Payments
+tags_raw:
+- Company
+- Fintech
+- Billing
+- Invoicing
+- Metering
+- Usage-Based
 - Subscriptions
 - Payments
 - API
@@ -58,6 +67,8 @@ apis:
   humanURL: https://docs.tryaqueduct.com/reference
   baseURL: https://api.tryaqueduct.com/v1
   tags:
+  - Account Owner
+  tags_raw:
   - AccountOwner
   properties:
   - type: OpenAPI
@@ -166,6 +177,8 @@ apis:
   humanURL: https://docs.tryaqueduct.com/reference
   baseURL: https://api.tryaqueduct.com/v1
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -202,6 +215,8 @@ apis:
   humanURL: https://docs.tryaqueduct.com/reference
   baseURL: https://api.tryaqueduct.com/v1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -220,6 +235,8 @@ apis:
   humanURL: https://docs.tryaqueduct.com/reference
   baseURL: https://api.tryaqueduct.com/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
