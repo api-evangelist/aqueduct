@@ -78,7 +78,7 @@ apis:
   humanURL: https://docs.tryaqueduct.com/reference
   baseURL: https://api.tryaqueduct.com/v1
   tags:
-  - Account Owner
+  - AccountOwner
   tags_raw:
   - AccountOwner
   properties:
