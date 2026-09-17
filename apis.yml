@@ -129,24 +129,6 @@ apis:
     url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
   - type: DataModel
     url: data-model/aqueduct-data-model.yml
-- aid: aqueduct:aqueduct-invoicelineitem-api
-  name: Aqueduct InvoiceLineItem API
-  description: The InvoiceLineItem API from Aqueduct — 1 operation(s) for invoicelineitem.
-  humanURL: https://docs.tryaqueduct.com/reference
-  baseURL: https://api.tryaqueduct.com/v1
-  tags:
-  - InvoiceLineItem
-  properties:
-  - type: OpenAPI
-    url: openapi/aqueduct-invoicelineitem-api-openapi.yml
-  - type: Documentation
-    url: https://docs.tryaqueduct.com/reference
-  - type: APIReference
-    url: https://docs.tryaqueduct.com/reference
-  - type: GettingStarted
-    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
-  - type: DataModel
-    url: data-model/aqueduct-data-model.yml
 - aid: aqueduct:aqueduct-pricemodel-api
   name: Aqueduct PriceModel API
   description: The PriceModel API from Aqueduct — 3 operation(s) for pricemodel.
@@ -253,6 +235,24 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aqueduct-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tryaqueduct.com/reference
+  - type: APIReference
+    url: https://docs.tryaqueduct.com/reference
+  - type: GettingStarted
+    url: https://docs.tryaqueduct.com/reference/getting-started-with-your-api
+  - type: DataModel
+    url: data-model/aqueduct-data-model.yml
+- aid: aqueduct:aqueduct-invoice-line-item-api
+  name: Aqueduct Invoice Line Item API
+  description: The Invoice Line Item API from Aqueduct — 1 operation(s) for invoice line item.
+  humanURL: https://docs.tryaqueduct.com/reference
+  baseURL: https://api.tryaqueduct.com/v1
+  tags:
+  - Invoice Line Item
+  properties:
+  - type: OpenAPI
+    url: openapi/aqueduct-invoice-line-item-api-openapi.yml
   - type: Documentation
     url: https://docs.tryaqueduct.com/reference
   - type: APIReference
