@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Aqueduct API Reference AccountOwner ProductPurchases API
+  title: Aqueduct API Reference Product Purchases API
   description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
 servers:
 - url: https://api.tryaqueduct.com/v1
@@ -10,7 +10,7 @@ tags:
 paths:
   /productpurchases:
     get:
-      summary: Get all product purchases in an optional time range based on the service period start or billing end dates associated with the product purchase
+      summary: Get all product purchases in an optional time range based on the service period…
       operationId: getProductPurchases
       security:
       - bearerAuth: []

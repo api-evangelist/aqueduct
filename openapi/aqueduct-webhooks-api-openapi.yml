@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Aqueduct API Reference AccountOwner Webhooks API
+  title: Aqueduct API Reference Webhooks API
   description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
 servers:
 - url: https://api.tryaqueduct.com/v1
@@ -10,7 +10,7 @@ tags:
 paths:
   /webhookendpoints:
     post:
-      summary: Creates a webhook endpoint.
+      summary: Creates a webhook endpoint
       operationId: createwebhook
       tags:
       - Webhooks

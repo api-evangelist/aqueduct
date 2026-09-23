@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Aqueduct API Reference AccountOwner Subscriptions API
+  title: Aqueduct API Reference Subscriptions API
   description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
 servers:
 - url: https://api.tryaqueduct.com/v1
@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Subscriptions'
+      operationId: getSubscriptions
+      x-operation-id-source: derived
   /subscriptions/{subscriptionId}:
     get:
       summary: Retrieve a subscription
@@ -44,6 +46,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Subscription'
+      operationId: getSubscriptionsBySubscriptionId
+      x-operation-id-source: derived
     post:
       summary: Update a subscription
       operationId: updateSubscription

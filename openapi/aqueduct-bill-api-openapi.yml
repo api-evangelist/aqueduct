@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Aqueduct API Reference AccountOwner Bill API
+  title: Aqueduct API Reference Bill API
   description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
 servers:
 - url: https://api.tryaqueduct.com/v1
@@ -10,7 +10,7 @@ tags:
 paths:
   /bill:
     post:
-      summary: Bill against price models, and automatically create an invoice and subscription as needed
+      summary: Bill against price models, and automatically create an invoice and subscription…
       operationId: bill
       tags:
       - Bill

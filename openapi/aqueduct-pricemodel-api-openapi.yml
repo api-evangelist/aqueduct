@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Aqueduct API Reference AccountOwner PriceModel API
+  title: Aqueduct API Reference Price Model API
   description: The Aqueduct API is organized around REST. Aqueduct's API allows users to bill, invoice, and quote for usage based business models.
 servers:
 - url: https://api.tryaqueduct.com/v1
@@ -74,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PriceModel'
+      operationId: getPricemodelsByPricemodelId
+      x-operation-id-source: derived
   /pricemodels/{pricemodelId}/preview:
     post:
       summary: Preview the output of a PriceModel
@@ -121,6 +123,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LineItems'
+      operationId: postPricemodelsByPricemodelIdPreview
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:
