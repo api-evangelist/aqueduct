@@ -256,6 +256,8 @@ apis:
   humanURL: https://docs.tryaqueduct.com/reference
   baseURL: https://api.tryaqueduct.com/v1
   tags:
+  - InvoiceLineItem
+  tags_raw:
   - Invoice Line Item
   properties:
   - type: OpenAPI
@@ -269,6 +271,9 @@ apis:
   - type: DataModel
     url: data-model/aqueduct-data-model.yml
 common:
+- type: CapabilityMap
+  url: capabilities/aqueduct-capability-edges.yml
+  name: Aqueduct Business Capability Map
 - type: Overlay
   url: overlays/aqueduct-openapi-overlay.yaml
 - type: DeveloperPortal
