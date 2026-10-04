@@ -256,8 +256,6 @@ apis:
   humanURL: https://docs.tryaqueduct.com/reference
   baseURL: https://api.tryaqueduct.com/v1
   tags:
-  - InvoiceLineItem
-  tags_raw:
   - Invoice Line Item
   properties:
   - type: OpenAPI
