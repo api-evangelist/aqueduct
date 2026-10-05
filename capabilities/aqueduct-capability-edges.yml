@@ -1,0 +1,66 @@
+slug: aqueduct
+provider: Aqueduct
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Invoice
+  spec_file: aqueduct-invoice-api-openapi.yml
+  capability_id: BC-4250.30
+  capability_id_l1: BC-4250
+  capability_name: Invoicing & Statement Management
+  confidence: 0.9
+  evidence: POST /invoices 'Create a new invoice'; POST /invoices/{invoiceId}/send 'Send an Invoice via
+    email'; POST /invoices/{invoiceId}/void 'Void an Invoice'
+  reason: Creation, line-item addition, email delivery, refund and voiding of invoices is precisely generation,
+    delivery and adjustment of invoices under Invoicing & Statement Management.
+- tag: Invoice Line Item
+  spec_file: aqueduct-invoice-line-item-api-openapi.yml
+  capability_id: BC-4250.30
+  capability_id_l1: BC-4250
+  capability_name: Invoicing & Statement Management
+  confidence: 0.85
+  evidence: POST /invoicelineitems/{lineItemId} 'Update an InvoiceLineItem'; DELETE /invoicelineitems/{lineItemId}
+    'Delete an InvoiceLineItem'
+  reason: Editing and deleting invoice line items is invoice composition/adjustment, part of Invoicing
+    & Statement Management on this billing platform.
+- tag: Subscriptions
+  spec_file: aqueduct-subscriptions-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.85
+  evidence: GET /subscriptions Retrieve a list of subscriptions; POST /subscriptions/{subscriptionId}
+    updateSubscription; DELETE /subscriptions/{subscriptionId} deleteSubscription
+  reason: Full CRUD over subscriptions (update, delete) is subscription lifecycle management; spans modification
+    and cancellation so the L1 is the honest level.
+- tag: PriceModel
+  spec_file: aqueduct-pricemodel-api-openapi.yml
+  capability_id: BC-4250.20
+  capability_id_l1: BC-4250
+  capability_name: Rating & Charging
+  confidence: 0.75
+  evidence: POST /pricemodels createPriceModel Create a new price model; Preview the output of a PriceModel
+  reason: Aqueduct price models are composed of price functions (per-unit meters) used to compute charges
+    for usage-based billing, matching Rating & Charging. Plan/pricing design is adjacent but the operations
+    define the rating tariff structure.
+- tag: Bill
+  spec_file: aqueduct-bill-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.72
+  evidence: POST /billableEvents 'Send events you may want to bill against Aqueduct'; POST /bill 'Bill
+    against price models, and automatically create an invoice and subscription…'
+  reason: Ingestion and retrieval of billable usage events feeding rating is Usage Metering within Subscription
+    Billing & Revenue Management; the /bill operation also spans rating and invoice creation, so the L1
+    is firm while the specific L2 split is less certain.
