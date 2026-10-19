@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.tryaqueduct.com/openapi/6387c00b5bcfa40016505b1d",
+ "requested_url": "https://docs.tryaqueduct.com/openapi/6387c00b5bcfa40016505b1d",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 45160,
+ "sha256": "2b47c57ede614dafcaa2e1415fcdef22b29c8ae9287acf98cbc704d30ed03b1f",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
