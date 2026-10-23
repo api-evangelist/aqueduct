@@ -228,3 +228,9 @@ components:
       type: apiKey
       name: Authorization
       in: header
+x-provenance:
+  method: harvested
+  publisher: Aqueduct
+  source: https://docs.tryaqueduct.com/openapi/6387c00b5bcfa40016505b1d
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
