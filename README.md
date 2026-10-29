@@ -64,6 +64,141 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aqueduct is a company surfaced as a portfolio company of bain-capital-ventures and added to the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment pipeline.
+Aqueduct is a fintech billing platform that equips B2B businesses with billing, invoicing, quoting, and accounting for usage-based and metered business models. Developers configure how they collect money as a PriceModel (composed of price functions such as per-unit meters), send billable usage events, and let Aqueduct create invoices and subscriptions, send invoices by email, issue refunds, and auto-provision access via signed webhooks. The REST API lives at api.tryaqueduct.com/v1 with API-key authentication and a documented Idempotency-Key contract. Founded 2020 in Bellevue, WA and backed by Bain Capital Ventures and Conversion Capital, Aqueduct was acquired by Stripe in August 2024; its ReadMe developer portal at docs.tryaqueduct.com remains live.
 
-Backed by: bain-capital-ventures — https://www.tryaqueduct.com/
+**Areas:** Company · Fintech · Billing · Invoicing · Metering · Usage-Based · Subscription · Payments
+
+## Aqueduct on APIs.io
+
+Everything profiled for Aqueduct is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aqueduct/](https://apis.io/providers/aqueduct/)** — or go straight to one of the APIs or properties below.
+
+### APIs (10)
+
+- [Aqueduct AccountOwner API](https://apis.io/apis/aqueduct/aqueduct-accountowner-api/) — The AccountOwner API from Aqueduct — 3 operation(s) for accountowner.
+- [Aqueduct Bill API](https://apis.io/apis/aqueduct/aqueduct-bill-api/) — The Bill API from Aqueduct — 2 operation(s) for bill.
+- [Aqueduct Invoice API](https://apis.io/apis/aqueduct/aqueduct-invoice-api/) — The Invoice API from Aqueduct — 6 operation(s) for invoice.
+- [Aqueduct PriceModel API](https://apis.io/apis/aqueduct/aqueduct-pricemodel-api/) — The PriceModel API from Aqueduct — 3 operation(s) for pricemodel.
+- [Aqueduct ProductPurchases API](https://apis.io/apis/aqueduct/aqueduct-productpurchases-api/) — The ProductPurchases API from Aqueduct — 1 operation(s) for productpurchases.
+- [Aqueduct Products API](https://apis.io/apis/aqueduct/aqueduct-products-api/) — The Products API from Aqueduct — 2 operation(s) for products.
+- [Aqueduct Provisioning API](https://apis.io/apis/aqueduct/aqueduct-provisioning-api/) — The Provisioning API from Aqueduct — 1 operation(s) for provisioning.
+- [Aqueduct Subscriptions API](https://apis.io/apis/aqueduct/aqueduct-subscriptions-api/) — The Subscriptions API from Aqueduct — 2 operation(s) for subscriptions.
+- [Aqueduct Webhooks API](https://apis.io/apis/aqueduct/aqueduct-webhooks-api/) — The Webhooks API from Aqueduct — 1 operation(s) for webhooks.
+- [Aqueduct Invoice Line Item API](https://apis.io/apis/aqueduct/aqueduct-invoice-line-item-api/) — The Invoice Line Item API from Aqueduct — 1 operation(s) for invoice line item.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Aqueduct Webhooks](https://apis.io/asyncapis/aqueduct/aqueduct-webhooks-asyncapi/)
+
+#### Event channels (1)
+
+Individual events and webhooks the provider emits.
+
+- [{subscriberUrl}](https://apis.io/channels/aqueduct/subscriberurl/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [aqueduct](https://apis.io/servers/aqueduct/aqueduct/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Aqueduct Agentic Access](https://apis.io/agentic-access/aqueduct/aqueduct-agentic-access/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [Aqueduct API Reference AccountOwner API](https://apis.io/collections/aqueduct/open-aqueduct-accountowner-api/)
+- [Aqueduct API Reference AccountOwner Bill API](https://apis.io/collections/aqueduct/open-aqueduct-bill-api/)
+- [Aqueduct API Reference AccountOwner Invoice API](https://apis.io/collections/aqueduct/open-aqueduct-invoice-api/)
+- [Aqueduct API Reference AccountOwner InvoiceLineItem API](https://apis.io/collections/aqueduct/open-aqueduct-invoicelineitem-api/)
+- [Aqueduct API Reference AccountOwner PriceModel API](https://apis.io/collections/aqueduct/open-aqueduct-pricemodel-api/)
+- [Aqueduct API Reference AccountOwner ProductPurchases API](https://apis.io/collections/aqueduct/open-aqueduct-productpurchases-api/)
+- [Aqueduct API Reference AccountOwner Products API](https://apis.io/collections/aqueduct/open-aqueduct-products-api/)
+- [Aqueduct API Reference AccountOwner Provisioning API](https://apis.io/collections/aqueduct/open-aqueduct-provisioning-api/)
+- [Aqueduct API Reference AccountOwner Subscriptions API](https://apis.io/collections/aqueduct/open-aqueduct-subscriptions-api/)
+- [Aqueduct API Reference AccountOwner Webhooks API](https://apis.io/collections/aqueduct/open-aqueduct-webhooks-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Aqueduct Openapi Overlay](https://apis.io/overlays/aqueduct/aqueduct-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aqueduct Authentication](https://apis.io/security/aqueduct/aqueduct-authentication/)
+- [Aqueduct Domain Security](https://apis.io/security/aqueduct/aqueduct-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.tryaqueduct.com/)
+- [Documentation](https://docs.tryaqueduct.com/reference)
+- [Getting started](https://docs.tryaqueduct.com/reference/getting-started-with-your-api)
+- [API reference](https://docs.tryaqueduct.com/reference)
+
+## API Evangelist rating
+
+**Kin Score 29.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 50.5 |
+| Contract governance | 4.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.7 |
+| Access clarity | 0.0 |
+
+**Agent readiness 29.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.2** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aqueduct/](https://apis.io/providers/aqueduct/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Aqueduct: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aqueduct/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
